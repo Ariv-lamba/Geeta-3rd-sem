@@ -1,0 +1,98 @@
+/*
+==================== 1. WHAT IS PREFIX? ====================
+
+Definition:
+➡ A prefix is the "cumulative result" of elements 
+   from the *start* of the array/string up to a certain index.
+
+Formula (for prefix sum):
+prefix[i] = arr[0] + arr[1] + ... + arr[i]
+
+Example:
+arr = [2, 4, 6, 8]
+prefix = [2, 6, 12, 20]
+
+Meaning:
+- prefix[0] = 2
+- prefix[1] = 2 + 4 = 6
+- prefix[2] = 2 + 4 + 6 = 12
+- prefix[3] = 2 + 4 + 6 + 8 = 20
+
+Use Case:
+➡ Quickly answer "sum of subarray" queries.
+   sum(l, r) = prefix[r] - prefix[l-1]
+
+------------------------------------------------------------
+
+==================== 2. WHAT IS SUFFIX? ====================
+
+Definition:
+➡ A suffix is the "cumulative result" of elements 
+   from the *end* of the array/string to a certain index.
+
+Formula (for suffix sum):
+suffix[i] = arr[i] + arr[i+1] + ... + arr[n-1]
+
+Example:
+arr = [2, 4, 6, 8]
+suffix = [20, 18, 14, 8]
+
+Meaning:
+- suffix[3] = 8
+- suffix[2] = 6 + 8 = 14
+- suffix[1] = 4 + 6 + 8 = 18
+- suffix[0] = 2 + 4 + 6 + 8 = 20
+
+Use Case:
+➡ Useful in problems where we need to check "from the end".
+
+------------------------------------------------------------
+
+==================== 3. COMBINED USE ====================
+
+👉 Sometimes we need BOTH prefix and suffix.
+Example Problem:
+Check if there exists an index such that
+sum of left side == sum of right side.
+
+arr = [1, 7, 3, 6, 5, 6]
+
+prefix = [1, 8, 11, 17, 22, 28]
+suffix = [28, 27, 20, 17, 11, 6]
+
+At index 3:
+prefix[3] = 17
+suffix[3] = 17
+✅ Equal! → Equilibrium index = 3
+
+------------------------------------------------------------
+
+==================== 4. PREFIX & SUFFIX IN STRINGS ====================
+
+Prefix:
+A substring that starts at index 0.
+String: "abcde"
+Prefixes: "a", "ab", "abc", "abcd", "abcde"
+
+Suffix:
+A substring that ends at last index.
+String: "abcde"
+Suffixes: "e", "de", "cde", "bcde", "abcde"
+
+Use Case:
+➡ String matching (KMP algorithm),
+➡ Palindrome checking,
+➡ Substring problems.
+
+------------------------------------------------------------
+
+==================== 5. REAL LIFE PROBLEMS USING PREFIX-SUFFIX ====================
+
+1. Subarray sum queries (Prefix sum)
+2. Equilibrium index (Prefix + Suffix)
+3. Maximum subarray (Kadane’s algo uses prefix idea)
+4. String pattern matching (KMP uses prefix-function)
+5. Trapping Rain Water (uses prefix max + suffix max arrays)
+6. product of array itself.
+
+*/
