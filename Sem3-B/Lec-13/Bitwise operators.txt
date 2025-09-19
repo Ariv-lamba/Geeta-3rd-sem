@@ -1,0 +1,136 @@
+//--------------------------------------
+// Bitwise Operators in C++
+//--------------------------------------
+
+Operator   Symbol   Meaning                         Example
+------------------------------------------------------------
+AND        &        1 if both bits are 1            5 & 3 = 1
+OR         |        1 if at least one bit is 1      5 | 3 = 7
+XOR        ^        1 if bits are different         5 ^ 3 = 6
+NOT        ~        Inverts all bits                ~5 = -6
+LeftShift  <<       Shifts bits left, adds 0        5 << 1 = 10
+RightShift >>       Shifts bits right, removes bit  5 >> 1 = 2
+
+
+🔢 Example (Step by Step)
+
+Let’s take 5 and 3.
+In binary (8-bit representation):
+
+5 = 00000101  
+3 = 00000011
+
+
+AND (&)
+
+00000101  
+00000011  
+---------  
+00000001  = 1
+
+
+OR (|)
+
+00000101  
+00000011  
+---------  
+00000111  = 7
+
+
+XOR (^)
+
+00000101  
+00000011  
+---------  
+00000110  = 6
+
+
+NOT (~)
+
+00000101 → 11111010 = -6 (because of 2’s complement)
+
+
+Left Shift (<<)
+
+5 << 1 → 00000101 → 00001010 = 10
+
+
+Right Shift (>>)
+
+5 >> 1 → 00000101 → 00000010 = 2
+
+🖥️ Code Example
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 5, b = 3;
+
+    cout << "a & b = " << (a & b) << endl;   // AND
+    cout << "a | b = " << (a | b) << endl;   // OR
+    cout << "a ^ b = " << (a ^ b) << endl;   // XOR
+    cout << "~a = " << (~a) << endl;         // NOT
+    cout << "a << 1 = " << (a << 1) << endl; // Left Shift
+    cout << "a >> 1 = " << (a >> 1) << endl; // Right Shift
+
+    return 0;
+}
+
+📊 Output
+a & b = 1
+a | b = 7
+a ^ b = 6
+~a = -6
+a << 1 = 10
+a >> 1 = 2
+
+
+⚡ Key Uses of Bitwise Operators:
+
+Fast arithmetic (e.g., multiply/divide by 2 using shifts).
+
+Checking odd/even (n & 1).
+
+Swapping numbers without extra space (a = a ^ b; b = a ^ b; a = a ^ b;).
+
+Bit masking (turning bits ON/OFF).
+
+👉 Do you want me to also give you a summary table of real-life use cases (like odd/even check, set/unset a bit, toggle a bit) with code snippets?
+
+You said:
+write first table such that i can do copy paste on vs code, also add how bitwise operators help us to find range of int. 
+ChatGPT said:
+
+Got it ✅
+Here’s a VS Code–friendly table (formatted with plain text). You can copy-paste directly and it will stay aligned. I also added the point about range of int using bitwise operators.
+
+
+
+//--------------------------------------
+// Extra: Range of int using bitwise
+//--------------------------------------
+// Formula for signed int range:
+//   Min = -(1 << (bits - 1))
+//   Max =  (1 << (bits - 1)) - 1
+//
+// Example: If int = 32 bits
+//   Min = -(1 << 31) = -2147483648
+//   Max =  (1 << 31) - 1 = 2147483647
+//
+// Example Code:
+
+#include <iostream>
+#include <climits> // for INT_MIN, INT_MAX
+using namespace std;
+
+int main() {
+    cout << "INT_MIN (using bitwise): " << -(1 << 31) << endl;
+    cout << "INT_MAX (using bitwise): " << ((1 << 31) - 1) << endl;
+
+    // Compare with predefined values
+    cout << "INT_MIN (library): " << INT_MIN << endl;
+    cout << "INT_MAX (library): " << INT_MAX << endl;
+    return 0;
+}
+
+//--------------------------------------
